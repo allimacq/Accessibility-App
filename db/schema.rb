@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_202612) do
+ActiveRecord::Schema.define(version: 2021_05_27_204432) do
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "rating"
+    t.boolean "accessible?"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -21,22 +30,28 @@ ActiveRecord::Schema.define(version: 2021_05_17_202612) do
     t.index ["state_id"], name: "index_cities_on_state_id"
   end
 
+  create_table "parks", force: :cascade do |t|
+    t.string "name"
+    t.integer "city_id"
+    t.integer "state_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_parks_on_city_id"
+    t.index ["state_id"], name: "index_parks_on_state_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "review"
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "states", force: :cascade do |t|
     t.string "name"
     t.string "abbreviation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "trails", force: :cascade do |t|
-    t.string "name"
-    t.float "distance"
-    t.string "surface_type"
-    t.integer "city_id"
-    t.string "state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["city_id"], name: "index_trails_on_city_id"
   end
 
   create_table "users", force: :cascade do |t|

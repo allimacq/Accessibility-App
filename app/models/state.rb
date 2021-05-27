@@ -1,4 +1,4 @@
 class State < ApplicationRecord
     has_many :cities
-    has_many :trails, through: :cities
+    has_many :parks, through: :cities
 end
