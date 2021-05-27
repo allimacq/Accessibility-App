@@ -30,8 +30,6 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 
-gem 'ratyrate'
-
 gem 'nokogiri'
 
 group :development, :test do
