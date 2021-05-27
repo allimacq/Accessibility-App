@@ -3,4 +3,6 @@ class Park < ApplicationRecord
     has_many :reviews, through: :activities
     belongs_to :city
     belongs_to :state
+
+    validates :name, presence: true, uniqueness: true
 end
