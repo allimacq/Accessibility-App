@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_02_190834) do
+ActiveRecord::Schema.define(version: 2021_06_03_193736) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 2021_06_02_190834) do
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.integer "state_id"
-    t.integer "zipcode"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "zipcode"
     t.index ["state_id"], name: "index_cities_on_state_id"
   end
 
