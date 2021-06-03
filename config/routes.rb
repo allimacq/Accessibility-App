@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  get 'states/index'
+  resources :states, only: [:index, :show]
   root to: "states#index"
   resources :parks do
     resources :activities

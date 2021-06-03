@@ -1,5 +1,5 @@
 <%= render 'users/actions' %>
 
 <% @states.each do |state|%>
-    <%= state.name %><br>
+    <%= link_to state.name, state_path(state) %><br>
 <% end %>
