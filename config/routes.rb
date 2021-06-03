@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  get 'home/index'
-  root to: "home#index"
+  get 'states/index'
+  root to: "states#index"
   resources :parks do
     resources :activities
   end
