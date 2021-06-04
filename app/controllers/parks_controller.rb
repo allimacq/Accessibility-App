@@ -10,6 +10,7 @@ class ParksController < ApplicationController
         if @park.save
             redirect_to park_path(@park)
         else
+            @state = cookies[:state_id]
             render :new
         end
     end
