@@ -6,6 +6,7 @@ class ParksController < ApplicationController
     end
 
     def create
+        #raise params.inspect
         @park = Park.create(parks_params)
         if @park.save
             redirect_to park_path(@park)
@@ -16,7 +17,7 @@ class ParksController < ApplicationController
     end
 
     def show
-        @park = Park.find_by(params[:id])
+        @park = Park.find_by_id(params[:id])
     end
 
 
@@ -24,7 +25,7 @@ class ParksController < ApplicationController
     private
 
     def parks_params
-        params.require(:park).permit(:name, :state_id, :city_id, :user_id)
+        params.require(:park).permit(:name, :state_id, :city_id, :user_id, :accessible?)
     end
 
 
