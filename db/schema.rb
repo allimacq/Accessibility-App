@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_193736) do
+ActiveRecord::Schema.define(version: 2021_06_04_163539) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2021_06_03_193736) do
     t.boolean "accessible?"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "users_id", null: false
+    t.index ["users_id"], name: "index_activities_on_users_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -36,8 +38,10 @@ ActiveRecord::Schema.define(version: 2021_06_03_193736) do
     t.integer "state_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "users_id", null: false
     t.index ["city_id"], name: "index_parks_on_city_id"
     t.index ["state_id"], name: "index_parks_on_state_id"
+    t.index ["users_id"], name: "index_parks_on_users_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -78,4 +82,6 @@ ActiveRecord::Schema.define(version: 2021_06_03_193736) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "users", column: "users_id"
+  add_foreign_key "parks", "users", column: "users_id"
 end
