@@ -14,11 +14,16 @@ class ParksController < ApplicationController
         end
     end
 
+    def show
+        @park = Park.find_by(params[:id])
+    end
+
+
 
     private
 
     def parks_params
-        params.require(:park).permit(:name, :state_id, :city_id)
+        params.require(:park).permit(:name, :state_id, :city_id, :user_id)
     end
 
 
