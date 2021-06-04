@@ -1,3 +1,14 @@
-<% form_for @park do |f| %>
-  <% render "error" %>
+<h1>Create New Park for <%= "#{State.find_by_id(@state).name}"%></h1>
+<%= form_for @park do |f| %>
+  <%= render "error" %>
+  <%= f.label "Park Name" %><br>
+  <%= f.text_field :name %><br><br>
+
+  <%= f.hidden_field :state_id, value: @state %>
+  <%= f.label "Select City" %><br>
+  <%= f.collection_select :city_id, City.where(state_id: @state), :id, :name %><br>
+  <%= f.submit %>
+
 <% end %>
+<br>
+<%= link_to "Go Home", root_path %>

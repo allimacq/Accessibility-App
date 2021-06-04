@@ -2,6 +2,7 @@ class ParksController < ApplicationController
 
     def new
         @park = Park.new
+        @state = cookies[:state_id]
     end
 
     def create
