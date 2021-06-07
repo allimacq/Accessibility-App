@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_04_201748) do
+ActiveRecord::Schema.define(version: 2021_06_07_205100) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -50,6 +50,10 @@ ActiveRecord::Schema.define(version: 2021_06_04_201748) do
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "activity_id", null: false
+    t.integer "park_id", null: false
+    t.index ["activity_id"], name: "index_reviews_on_activity_id"
+    t.index ["park_id"], name: "index_reviews_on_park_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -85,4 +89,6 @@ ActiveRecord::Schema.define(version: 2021_06_04_201748) do
 
   add_foreign_key "activities", "users"
   add_foreign_key "parks", "users"
+  add_foreign_key "reviews", "activities"
+  add_foreign_key "reviews", "parks"
 end
