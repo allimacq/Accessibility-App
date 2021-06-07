@@ -2,6 +2,15 @@
 <h1><%= @state.name %>'s Parks</h1>
 <h3><%= @state.parks.count %> Parks Found </h3>
 
+
+<ul>
+    <li>
+    <% @state.parks.each do |park| %>
+        <strong><%= link_to "#{park.name}", park_path(park) %></strong>
+    <% end %>
+    </li>
+</ul>
+
 <% if user_signed_in? %>
     <%= link_to "Create New Park for #{@state.name}", new_park_path %>
 <% end %>
