@@ -4,7 +4,7 @@ class CreateActivities < ActiveRecord::Migration[6.1]
       t.string :name
       t.text :description
       t.integer :rating
-      t.boolean :accessible?
+      t.boolean :accessible
 
       t.timestamps
     end

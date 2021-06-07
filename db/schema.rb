@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_201748) do
     t.string "name"
     t.text "description"
     t.integer "rating"
-    t.boolean "accessible?"
+    t.boolean "accessible"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_201748) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
-    t.boolean "accessible?"
+    t.boolean "accessible"
     t.index ["city_id"], name: "index_parks_on_city_id"
     t.index ["state_id"], name: "index_parks_on_state_id"
     t.index ["user_id"], name: "index_parks_on_user_id"

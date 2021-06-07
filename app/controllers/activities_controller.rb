@@ -6,8 +6,8 @@ class ActivitiesController < ApplicationController
 
     private
 
-    def parks_params
-        params.require(:park).permit(:name, :state_id, :city_id, :user_id, :accessible?)
+    def activities_params
+        params.require(:activity).permit(:name, :description, :rating, :accessible)
     end
-    
+
 end

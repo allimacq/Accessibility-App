@@ -5,5 +5,5 @@ class City < ApplicationRecord
     belongs_to :state
 
     validates_presence_of :name, :zipcode, :state
-    validates :zipcode, length: { is: 5 }, numericality: { only_integer: true }
+    #validates :zipcode, length: { is: 5 }, numericality: { only_integer: true }
 end
