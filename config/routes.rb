@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :states, only: [:index, :show]
   root to: "states#index"
+  resources :parks, only: [:new, :create, :edit, :update, :index, :show]
   resources :parks, only: [:show] do
     resources :reviews, only: [:show, :index, :new, :edit]
   end

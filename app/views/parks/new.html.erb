@@ -3,8 +3,6 @@
   <%= render "error" %>
   <strong><%= f.label "Park Name" %><br></strong>
   <%= f.text_field :name %><br><br>
-  <strong><%= f.label :accessible, "Is this park accessible?" %></strong><br>
-  <%= f.select :accessible, [["Yes", true], ["No", false]] %><br><br>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :state_id, value: @state %>
   <strong><%= f.label "Select City" %></strong><br>
