@@ -1,0 +1,22 @@
+<%= form_for @review do |f| %>
+  <%= render "error" %>
+  
+  <%= f.lable :title %><br>
+  <%= f.text_field :title %><br>
+
+  <strong><%= f.label "Select Activity" %><br></strong><br>
+  <%= f.collection_select :activity_id, Activity.all, :id, :name %><br><br>
+  <strong><%= f.label :accessible, "Is this activity accessible?" %></strong><br>
+  <%= f.select :accessible, [["Yes", true], ["No", false]] %><br><br>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :park_id %>
+
+  <%= f.label :rating %><br>
+  <%= f.number_field :rating %><br>
+
+  <%= f.label :review %><br>
+  <%= f.text_area :review %><br>
+  
+  <%= f.submit %>
+
+<% end %>
