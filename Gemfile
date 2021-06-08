@@ -32,7 +32,7 @@ gem 'devise'
 
 gem 'nokogiri'
 
-gem 'omniauth'
+gem 'omniauth', '~>2.0.4'
 gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 gem 'omniauth-rails_csrf_protection'

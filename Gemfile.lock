@@ -270,7 +270,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.3)
   nokogiri
-  omniauth
+  omniauth (~> 2.0.4)
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   puma (~> 5.0)

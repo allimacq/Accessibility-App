@@ -15,9 +15,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-  def passthru
-    super
-  end
+  #def passthru
+    #super
+  #end
 
   def failure
     redirect_to root_path
