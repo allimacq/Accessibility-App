@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_205100) do
+ActiveRecord::Schema.define(version: 2021_06_08_171815) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_205100) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "activity_id", null: false
     t.integer "park_id", null: false
+    t.string "title"
     t.index ["activity_id"], name: "index_reviews_on_activity_id"
     t.index ["park_id"], name: "index_reviews_on_park_id"
   end
