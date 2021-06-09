@@ -75,3 +75,19 @@ csv.each do |row|
 end
 
 puts "There are now #{City.count} rows in the Cities table"
+
+Activity.create(name: "ATV")
+Activity.create(name: "Bike")
+Activity.create(name: "Birding")
+Activity.create(name: "Cross Country Skiing")
+Activity.create(name: "Dog Walking")
+Activity.create(name: "Fishing")
+Activity.create(name: "Geocaching")
+Activity.create(name: "Hiking")
+Activity.create(name: "Horseback Riding")
+Activity.create(name: "Inline Skating")
+Activity.create(name: "Mountain Biking")
+Activity.create(name: "Snowmobiling")
+Activity.create(name: "Walking")
+
+puts "There are now #{Activity.count} rows in Activities table."

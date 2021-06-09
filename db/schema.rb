@@ -10,22 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_200824) do
+ActiveRecord::Schema.define(version: 2021_06_01_235353) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.integer "state_id"
+    t.string "zipcode"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "zipcode"
     t.index ["state_id"], name: "index_cities_on_state_id"
   end
 
@@ -33,24 +31,27 @@ ActiveRecord::Schema.define(version: 2021_06_08_200824) do
     t.string "name"
     t.integer "city_id"
     t.integer "state_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
     t.index ["city_id"], name: "index_parks_on_city_id"
     t.index ["state_id"], name: "index_parks_on_state_id"
     t.index ["user_id"], name: "index_parks_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.string "title"
     t.text "review"
     t.integer "rating"
+    t.boolean "accessible"
+    t.integer "activity_id"
+    t.integer "park_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "activity_id", null: false
-    t.integer "park_id", null: false
-    t.string "title"
     t.index ["activity_id"], name: "index_reviews_on_activity_id"
     t.index ["park_id"], name: "index_reviews_on_park_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -84,8 +85,4 @@ ActiveRecord::Schema.define(version: 2021_06_08_200824) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "activities", "users"
-  add_foreign_key "parks", "users"
-  add_foreign_key "reviews", "activities"
-  add_foreign_key "reviews", "parks"
 end

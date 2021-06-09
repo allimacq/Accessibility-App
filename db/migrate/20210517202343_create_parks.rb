@@ -4,6 +4,7 @@ class CreateParks < ActiveRecord::Migration[6.1]
       t.string :name
       t.belongs_to :city
       t.belongs_to :state
+      t.belongs_to :user
 
       t.timestamps
     end
