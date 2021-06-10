@@ -1,0 +1,14 @@
+<h1><%= @review.title %></h1>
+<h4><%= @review.display_accessibility(@user, @activity, @park) %> </h4>
+
+<h5><%= @review.stars %></h5>
+<p><%= @review.review %></p>
+
+<% if @user.id != current_user.id && user_signed_in? %>
+    <%= link_to "Leave a Review For #{@park.name}", new_park_review_path(@park, @review) %><br>
+<% elsif user_signed_in? && @user.id == current_user.id %>
+    <%= link_to "Edit Your Review", edit_park_review_path(@park, @review) %><br>
+<% end %>
+<br>
+<footer><%= link_to "Home", root_path %><br>
+<%= render "users/actions" %><br></footer>

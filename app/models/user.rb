@@ -22,4 +22,8 @@ class User < ApplicationRecord
     user
   end
 
+  def make_name
+    self.email.split("@")[0].capitalize
+  end
+
 end
