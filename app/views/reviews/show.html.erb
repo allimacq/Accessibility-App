@@ -4,11 +4,9 @@
 <h5><%= @review.stars %></h5>
 <p><%= @review.review %></p>
 
-<%  if user_signed_in? %>
-    <% if @user.id != current_user.id %>
-        <%= link_to "Leave a Review For #{@park.name}", new_park_review_path(@park, @review) %><br>
-    <% end %>
-<% elsif user_signed_in? && @user.id == current_user.id %>
+<%  if user_signed_in? && !review_author(@review) %>
+    <%= link_to "Leave a Review For #{@park.name}", new_park_review_path(@park, @review) %><br>
+<% elsif review_author(@review) %>
     <%= link_to "Edit Your Review", edit_park_review_path(@park, @review) %><br>
     <%= button_to "Delete Your Review", park_review_path(@park, @review), method: :delete %>
 <% end %>
