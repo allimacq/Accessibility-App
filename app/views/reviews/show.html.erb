@@ -10,5 +10,6 @@
     <%= link_to "Edit Your Review", edit_park_review_path(@park, @review) %><br>
 <% end %>
 <br>
-<footer><%= link_to "Home", root_path %><br>
+<footer><%= link_to "View #{@park.name}", park_path(@park) %><br>
+<%= link_to "Home", root_path %><br>
 <%= render "users/actions" %><br></footer>

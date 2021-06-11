@@ -2,16 +2,16 @@ class ReviewsController < ApplicationController
 
     def new
         @park = Park.find_by_id(params[:park_id])
-        @review = Review.new(park: @park)
+        @review = Review.new(park_id: @park.id)
     end
 
     def create
         @review = Review.create(reviews_params)
+        @park = Park.find_by_id(params[:park_id])
         if @review.save
-            @park = Park.find_by_id(params[:park_id])
             redirect_to park_review_path(@park, @review)
         else
-            render :new
+            render partial: 'reviews/form'
         end
     end
 

@@ -3,10 +3,12 @@ class Review < ApplicationRecord
     belongs_to :activity
     belongs_to :park
 
-    validates_presence_of :review, :rating
-    validates_inclusion_of :rating, in: 1..5
-
+    validates :review, :rating, :title, presence: true
+    validates :rating, inclusion: { in: 1..5 }
+    validates :user_id, uniqueness: {scope: :park_id, 
+        message: "can only review a park once" }, on: :create
     #scope :rating, -> (amount) { where ("star > ?" , amount) }
+
 
     def display_accessibility(user, activity, park)
         if self.accessible == true

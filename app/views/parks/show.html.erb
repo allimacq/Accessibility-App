@@ -4,7 +4,7 @@
 
 
 <% @park.reviews.each do |review| %>
-    <%= link_to "#{review.title} - #{review.rating} stars", park_review_path(@park, @park.review) %><br>
+    <%= link_to "#{review.title} - #{review.rating} stars", park_review_path(@park) %><br>
 <% end %>
 <% if user_signed_in? %>
     <%= link_to "Add Review for #{@park.name}", new_park_review_path(@park, @review) %>
