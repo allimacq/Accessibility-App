@@ -34,6 +34,11 @@ class ReviewsController < ApplicationController
         redirect_to park_review_path(@park, @review)
     end
 
+    def destroy
+        @review = Review.find(params[:id]).destroy
+        redirect_to root_path
+    end
+
 
     private
 
