@@ -13,6 +13,9 @@
     <%= button_to "Delete Your Review", park_review_path(@park, @review), method: :delete %>
 <% end %>
 <br>
+
+
 <footer><%= link_to "Go Back To #{@park.name}", park_path(@park) %><br>
+<%= link_to "View Other Parks in #{@park.state.name}", state_path(@park.state) %><br>
 <%= link_to "Home", root_path %><br>
 <%= render "users/actions" %><br></footer>

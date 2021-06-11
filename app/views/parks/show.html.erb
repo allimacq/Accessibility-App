@@ -1,11 +1,29 @@
-<h1><%= @park.name %></h1>
-<h2><%= @park.city.name%> - <%= @park.state.name%></h2>
+<header><h1><%= @park.name %></h1>
+<h2><%= @park.city.name%> - <%= @park.state.name%></h2></header>
+
+    <body>
 
 
+        <p>
+            <% @park.reviews.each do |review| %>
+                <%= link_to "#{review.title} - #{review.rating} stars", park_review_path(@park, review) %><br>
+            <% end %>
+        </p>
 
-<% @park.reviews.each do |review| %>
-    <%= link_to "#{review.title} - #{review.rating} stars", park_review_path(@park, review) %><br>
-<% end %>
-<% if user_signed_in? %>
-    <%= link_to "Add Review for #{@park.name}", new_park_review_path(@park, @review) %>
-<% end %>
+        <p><%= link_to "Add Review for #{@park.name}", new_park_review_path(@park, @review) %></p><br>
+
+    <p>
+        <% if user_signed_in? %>
+            <% if @park.user_id == current_user.id  %>
+                <%= link_to "Edit #{@park.name}", edit_park_path(@park) %>
+                <%= button_to "Delete #{@park.name}", park_path(@park), method: :delete %>
+            <% end %>
+        <% end %>
+    </p>
+
+</body>
+
+<footer>
+    <%= link_to "View Other Parks in #{@park.state.name}", state_path(@park.state_id)%>
+    <%= link_to "Home", root_path %>
+</footer>
