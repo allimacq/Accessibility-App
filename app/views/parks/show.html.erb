@@ -4,8 +4,17 @@
     <body>
 
 
+    <h4>Filter Park Reviews by Accessibility :</h4>
+    <%= form_tag("/parks/#{@park.id}", method: "get") do %>
+        <%= select_tag "reviews", options_for_select(["Accessible", "Not Accessible"]), include_blank: true %>
+        <%= submit_tag "Filter Reviews" %>
+    <% end %>
+
+
+
+
         <p>
-            <% @park.reviews.each do |review| %>
+            <% @park_reviews.each do |review| %>
                 <%= link_to "#{review.title} - #{review.rating} stars", park_review_path(@park, review) %><br>
             <% end %>
         </p>
