@@ -13,11 +13,9 @@
         <p><%= link_to "Add Review for #{@park.name}", new_park_review_path(@park, @review) %></p><br>
 
     <p>
-        <% if user_signed_in? %>
-            <% if @park.user_id == current_user.id  %>
-                <%= link_to "Edit #{@park.name}", edit_park_path(@park) %>
-                <%= button_to "Delete #{@park.name}", park_path(@park), method: :delete %>
-            <% end %>
+        <% if park_author(@park) %>
+            <%= link_to "Edit #{@park.name}", edit_park_path(@park) %>
+            <%= button_to "Delete #{@park.name}", park_path(@park), method: :delete %>
         <% end %>
     </p>
 
