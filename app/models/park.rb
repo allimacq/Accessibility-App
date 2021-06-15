@@ -6,4 +6,8 @@ class Park < ApplicationRecord
     belongs_to :user
 
     validates :name, presence: true, uniqueness: true
+
+    def accessible_reviews(accessible)
+        park_reviews = self.reviews.select_by_accessibility(accessible)
+    end
 end
