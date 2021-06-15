@@ -7,11 +7,10 @@ class Review < ApplicationRecord
     validates :rating, inclusion: { in: 1..5 }
     validates :user_id, uniqueness: {scope: :park_id, 
         message: "can only review a park once" }, on: :create
-    #scope :select_by_rating, -> (amount) { where("rating >= ?", amount) }
     scope :select_by_accessibility, -> (selection) { where("accessible = ?", selection) }
 
     def display_accessibility(user, activity, park)
-        if self.accessible == true
+        if self.accessible == "true"
             "#{user.make_name} Found #{activity.name} at #{park.name} To Be Accessible"
         else
             "#{user.make_name} Found #{activity.name} at #{park.name} To Not Be Accessible"

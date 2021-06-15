@@ -17,6 +17,7 @@ class ParksController < ApplicationController
     end
 
     def show
+        
         @park = Park.find_by_id(params[:id])
         if !params[:accessible].blank?
             @park_reviews = @park.accessible_reviews(params[:accessible])
@@ -26,6 +27,11 @@ class ParksController < ApplicationController
         else
             @park_reviews = @park.reviews
         end
+    end
+
+    def destroy
+        @park = Park.find(params[:id]).destroy
+        redirect_to root_path, notice: "Successfully deleted."
     end
 
 
